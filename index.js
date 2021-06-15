@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const kpop = require('./data.js');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3357;
 
 app.use(cors())
 
@@ -12,8 +12,9 @@ app.get('/kpop', (req, res) => {
 
 app.get('/kpop/:id', (req, res) => {
     const id = Number(req.params.id);
+    const kgroup = kpop.find((bias) => bias.id === id)
 
-    res.json(kpop);
+    res.json(kgroup);
 });
 
 app.listen(port, () => {
