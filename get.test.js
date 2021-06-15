@@ -1,4 +1,4 @@
-const app = require('./index.js');
+const app = require('./server.js');
 const supertest = require('supertest');
 const request = supertest(app);
 
@@ -104,16 +104,14 @@ const bts =
         "color_2": "#FFFFFF",
     };
 
-it('kpop responds with all kpop data', async(done) => {
+it('kpop responds with all kpop data', async() => {
     const response = await request.get('/kpop');
 
     expect(response.body).toEqual(kpop);
-    done();
 });
 
-it('kpop/:id responds with one kpop group', async(done) => {
+it('kpop/:id responds with one kpop group', async() => {
     const response = await request.get('/kpop/1');
 
     expect(response.body).toEqual(bts);
-    done();
 });
